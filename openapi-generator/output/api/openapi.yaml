@@ -1,0 +1,111 @@
+openapi: 3.0.1
+info:
+  description: Servers management
+  title: Manage compute resources
+  version: "1.0"
+servers:
+- url: ///api/v1
+tags:
+- description: Servers related operations
+  name: servers
+paths:
+  /servers/:
+    get:
+      operationId: list_servers
+      responses:
+        200:
+          content: {}
+          description: Success
+      summary: List all servers
+      tags:
+      - servers
+    post:
+      operationId: create_server
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Server request'
+        required: true
+      responses:
+        200:
+          content: {}
+          description: Success
+      summary: Crete a server with its name
+      tags:
+      - servers
+  /servers/{id}:
+    delete:
+      operationId: delete_server
+      parameters:
+      - description: The server identifier
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content: {}
+          description: Success
+      summary: Delete a server given its identifier
+      tags:
+      - servers
+    get:
+      operationId: get_server
+      parameters:
+      - description: The server identifier
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content: {}
+          description: Success
+      summary: Fetch a server given its identifier
+      tags:
+      - servers
+    put:
+      operationId: update_server
+      parameters:
+      - description: The server identifier
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Server request'
+        required: true
+      responses:
+        200:
+          content: {}
+          description: Success
+      summary: Update a server given its identifier
+      tags:
+      - servers
+components:
+  responses:
+    MaskError:
+      content: {}
+      description: When any error occurs on mask
+    ParseError:
+      content: {}
+      description: When a mask can't be parsed
+  schemas:
+    Server request:
+      properties:
+        name:
+          description: The server name
+          type: string
+        description:
+          description: The server description
+          type: string
+      required:
+      - name
+      type: object

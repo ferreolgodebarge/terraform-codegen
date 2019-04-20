@@ -1,0 +1,109 @@
+---
+swagger: "2.0"
+info:
+  description: "Servers management"
+  version: "1.0"
+  title: "Manage compute resources"
+basePath: "/api/v1"
+tags:
+- name: "servers"
+  description: "Servers related operations"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+paths:
+  /servers/:
+    get:
+      tags:
+      - "servers"
+      summary: "List all servers"
+      operationId: "list_servers"
+      parameters: []
+      responses:
+        200:
+          description: "Success"
+    post:
+      tags:
+      - "servers"
+      summary: "Crete a server with its name"
+      operationId: "create_server"
+      parameters:
+      - in: "body"
+        name: "payload"
+        required: true
+        schema:
+          $ref: "#/definitions/Server request"
+        x-exportParamName: "Payload"
+      responses:
+        200:
+          description: "Success"
+  /servers/{id}:
+    get:
+      tags:
+      - "servers"
+      summary: "Fetch a server given its identifier"
+      operationId: "get_server"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "The server identifier"
+        required: true
+        type: "string"
+        x-exportParamName: "Id"
+      responses:
+        200:
+          description: "Success"
+    put:
+      tags:
+      - "servers"
+      summary: "Update a server given its identifier"
+      operationId: "update_server"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "The server identifier"
+        required: true
+        type: "string"
+        x-exportParamName: "Id"
+      - in: "body"
+        name: "payload"
+        required: true
+        schema:
+          $ref: "#/definitions/Server request"
+        x-exportParamName: "Payload"
+      responses:
+        200:
+          description: "Success"
+    delete:
+      tags:
+      - "servers"
+      summary: "Delete a server given its identifier"
+      operationId: "delete_server"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "The server identifier"
+        required: true
+        type: "string"
+        x-exportParamName: "Id"
+      responses:
+        200:
+          description: "Success"
+definitions:
+  Server request:
+    type: "object"
+    required:
+    - "name"
+    properties:
+      name:
+        type: "string"
+        description: "The server name"
+      description:
+        type: "string"
+        description: "The server description"
+responses:
+  MaskError:
+    description: "When any error occurs on mask"
+  ParseError:
+    description: "When a mask can't be parsed"
