@@ -14,7 +14,12 @@ paths:
       operationId: list_servers
       responses:
         200:
-          content: {}
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Server'
+                type: array
           description: Success
       summary: List all servers
       tags:
@@ -28,9 +33,18 @@ paths:
               $ref: '#/components/schemas/Server request'
         required: true
       responses:
-        200:
-          content: {}
-          description: Success
+        201:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Server'
+          description: Created
+        409:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Server already exists.
       summary: Crete a server with its name
       tags:
       - servers
@@ -45,9 +59,15 @@ paths:
         schema:
           type: string
       responses:
-        200:
+        204:
           content: {}
-          description: Success
+          description: Deleted
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not found
       summary: Delete a server given its identifier
       tags:
       - servers
@@ -62,8 +82,17 @@ paths:
           type: string
       responses:
         200:
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Server'
           description: Success
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not found
       summary: Fetch a server given its identifier
       tags:
       - servers
@@ -84,8 +113,17 @@ paths:
         required: true
       responses:
         200:
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Server'
           description: Success
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Server not found
       summary: Update a server given its identifier
       tags:
       - servers
@@ -98,6 +136,26 @@ components:
       content: {}
       description: When a mask can't be parsed
   schemas:
+    Server:
+      example:
+        name: name
+        description: description
+        id: id
+      properties:
+        id:
+          description: The server identifier
+          type: string
+        name:
+          description: The server name
+          type: string
+        description:
+          description: The server description
+          type: string
+      required:
+      - description
+      - id
+      - name
+      type: object
     Server request:
       properties:
         name:
@@ -108,4 +166,16 @@ components:
           type: string
       required:
       - name
+      type: object
+    Error:
+      properties:
+        status:
+          description: Failure status
+          type: string
+        message:
+          description: Failure message
+          type: string
+      required:
+      - message
+      - status
       type: object

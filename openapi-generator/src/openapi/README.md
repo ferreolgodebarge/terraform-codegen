@@ -39,6 +39,8 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [Error](docs/Error.md)
+ - [Server](docs/Server.md)
  - [ServerRequest](docs/ServerRequest.md)
 
 

@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **CreateServer**
-> CreateServer(ctx, serverRequest)
+> Server CreateServer(ctx, serverRequest)
 Crete a server with its name
 
 ### Required Parameters
@@ -24,7 +24,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**Server**](Server.md)
 
 ### Authorization
 
@@ -33,7 +33,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -59,12 +59,12 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetServer**
-> GetServer(ctx, id)
+> Server GetServer(ctx, id)
 Fetch a server given its identifier
 
 ### Required Parameters
@@ -76,7 +76,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**Server**](Server.md)
 
 ### Authorization
 
@@ -85,12 +85,12 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ListServers**
-> ListServers(ctx, )
+> []Server ListServers(ctx, )
 List all servers
 
 ### Required Parameters
@@ -98,7 +98,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
- (empty response body)
+[**[]Server**](Server.md)
 
 ### Authorization
 
@@ -107,12 +107,12 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateServer**
-> UpdateServer(ctx, id, serverRequest)
+> Server UpdateServer(ctx, id, serverRequest)
 Update a server given its identifier
 
 ### Required Parameters
@@ -125,7 +125,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**Server**](Server.md)
 
 ### Authorization
 
@@ -134,7 +134,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
